@@ -5,8 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -24,21 +22,24 @@ class MainActivity : ComponentActivity() {
         setContent {
             EchoJournalTheme {
                 val navController = rememberNavController()
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    NavHost(
-                        modifier = Modifier.padding(innerPadding),
-                        navController = navController,
-                        startDestination = Route.EntryList
-                    ) {
-                        composable<Route.EntryList> {
-                            JournalListScreen(
-                                modifier = Modifier.fillMaxSize(),
-                                navController = navController
-                            )
-                        }
-                        composable<Route.CreateRecord> { }
-                        composable<Route.Settings> { }
+                NavHost(
+                    modifier = Modifier.fillMaxSize(),
+                    navController = navController,
+                    startDestination = Route.EntryList
+                ) {
+                    composable<Route.EntryList> {
+                        JournalListScreen(
+                            modifier = Modifier.fillMaxSize(),
+                            createRecord = {
+                                navController.navigate(Route.CreateRecord(it))
+                            },
+                            openSettings = {
+                                navController.navigate(Route.Settings)
+                            }
+                        )
                     }
+                    composable<Route.CreateRecord> { }
+                    composable<Route.Settings> { }
                 }
             }
         }

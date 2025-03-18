@@ -8,7 +8,7 @@ sealed interface Route {
     data object EntryList : Route
 
     @Serializable
-    data object CreateRecord : Route
+    data class CreateRecord constructor(val audioPath: String) : Route
 
     @Serializable
     data object Settings : Route

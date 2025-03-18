@@ -3,4 +3,13 @@
     <string name="no_entries">No Entries</string>
     <string name="no_entries_msg">Start recording your first Echo</string>
     <string name="entries_list_title">Your EchoJournal</string>
+    <string name="recording">Recording your memories…</string>
+    <string name="recording_paused">Recording paused</string>
+    <string name="go_to_settings">Go to Settings</string>
+    <string name="button_ok">OK</string>
+
+    <string name="permission_microphone_title">Microphone Permission</string>
+    <string name="permission_microphone_message">This app needs access to your microphone to record your voice.</string>
+    <string name="permission_microphone_permanently_denied">This app needs access to your microphone to record your voice. Please enable it in the settings.</string>
+
 </resources>
