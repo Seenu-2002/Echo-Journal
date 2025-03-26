@@ -6,7 +6,22 @@
     <string name="recording">Recording your memories…</string>
     <string name="recording_paused">Recording paused</string>
     <string name="go_to_settings">Go to Settings</string>
-    <string name="button_ok">OK</string>
+    <string name="ok">OK</string>
+    <string name="new_entry">New Entry</string>
+    <string name="add_title">Add Title…</string>
+    <string name="topic">Topic</string>
+    <string name="add_description">Add Description…</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="how_are_you_doing">How are you doing?</string>
+    <string name="confirm">Confirm</string>
+    <string name="create_tag">Create ‘%1$s’</string>
+
+    <string name="mood_stressed">Stressed</string>
+    <string name="mood_sad">Sad</string>
+    <string name="mood_neutral">Neutral</string>
+    <string name="mood_peaceful">Peaceful</string>
+    <string name="mood_excited">Excited</string>
 
     <string name="permission_microphone_title">Microphone Permission</string>
     <string name="permission_microphone_message">This app needs access to your microphone to record your voice.</string>

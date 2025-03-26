@@ -20,10 +20,16 @@ fun Activity.hasPermission(permission: String): Boolean {
     return ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
 }
 
-fun Long.formatTime(): String {
+fun Long.asTimeFormat(): String {
     val minutes = (this / 60000) % 60
     val seconds = (this / 1000) % 60
-    val milliseconds = (this % 1000) / 10  // Show only two digits for MS
 
-    return String.format(Locale.getDefault(), "%02d:%02d:%02d", minutes, seconds, milliseconds)
+    return String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds)
+}
+
+fun Int.asTimeFormat(): String {
+    val seconds = this / 1000 % 60
+    val minutes = this / 1000 / 60
+
+    return String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds)
 }

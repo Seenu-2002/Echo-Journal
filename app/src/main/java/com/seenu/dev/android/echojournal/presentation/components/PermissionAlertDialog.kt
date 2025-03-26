@@ -44,7 +44,7 @@ fun PermissionAlertDialog(
                 Button(
                     onClick = onOkClicked
                 ) {
-                    Text(text = stringResource(R.string.button_ok))
+                    Text(text = stringResource(R.string.ok))
                 }
             }
         },

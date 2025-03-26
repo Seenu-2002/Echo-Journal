@@ -9,7 +9,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import com.seenu.dev.android.echojournal.presentation.routes.Route
+import com.seenu.dev.android.echojournal.presentation.screens.CreateJournalScreen
 import com.seenu.dev.android.echojournal.presentation.screens.JournalListScreen
 import com.seenu.dev.android.echojournal.presentation.theme.EchoJournalTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,7 +40,18 @@ class MainActivity : ComponentActivity() {
                             }
                         )
                     }
-                    composable<Route.CreateRecord> { }
+                    composable<Route.CreateRecord> {
+                        CreateJournalScreen(
+                            modifier = Modifier.fillMaxSize(),
+                            filePath = it.toRoute<Route.CreateRecord>().audioPath,
+                            onBackClicked = {
+                                navController.popBackStack()
+                            },
+                            onCreated = {
+                                navController.popBackStack()
+                            }
+                        )
+                    }
                     composable<Route.Settings> { }
                 }
             }

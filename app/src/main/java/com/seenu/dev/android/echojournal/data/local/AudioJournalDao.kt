@@ -50,7 +50,7 @@ interface AudioJournalDao {
     fun deleteTag(tag: JournalTag)
 
     @Query("SELECT * FROM journal_tag WHERE tag LIKE :startsWith || '%'")
-    fun searchTag(startsWith: String): List<JournalTag>
+    fun searchTags(startsWith: String): Flow<List<JournalTag>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertJournalTagCrossRef(crossRefs: List<JournalTagCrossRef>)

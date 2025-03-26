@@ -51,10 +51,10 @@ import androidx.core.app.ActivityCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.seenu.dev.android.echojournal.R
+import com.seenu.dev.android.echojournal.presentation.asTimeFormat
 import com.seenu.dev.android.echojournal.presentation.components.Permission
 import com.seenu.dev.android.echojournal.presentation.components.PermissionAlertDialog
 import com.seenu.dev.android.echojournal.presentation.components.PulsatingButton
-import com.seenu.dev.android.echojournal.presentation.formatTime
 import com.seenu.dev.android.echojournal.presentation.goToAppSetting
 import com.seenu.dev.android.echojournal.presentation.hasPermission
 import com.seenu.dev.android.echojournal.presentation.theme.EchoJournalTheme
@@ -117,11 +117,11 @@ fun JournalListScreen(
         if (showBottomSheet) {
             if (isPermissionGranted) {
 
-                var durationText by remember { mutableStateOf("") }
+                var durationText by remember { mutableStateOf("00:00") }
                 LaunchedEffect(isRecording) {
                     while (isRecording) {
                         delay(1.seconds)
-                        durationText = (System.currentTimeMillis() - recordingStartedTime!!).formatTime()
+                        durationText = (System.currentTimeMillis() - recordingStartedTime!!).asTimeFormat()
                     }
                 }
                 RecordAudioBottomSheet(
@@ -143,10 +143,12 @@ fun JournalListScreen(
                     onDiscard = {
                         viewModel.discardRecording()
                         showBottomSheet = false
+                    },
+                    onDismiss =  {
+                        viewModel.discardRecording()
+                        showBottomSheet = false
                     }
-                ) {
-                    showBottomSheet = false
-                }
+                )
             } else {
                 RequestPermission(
                     onDismiss = {
@@ -325,7 +327,7 @@ fun RecordAudioBottomSheetContent(
                         .size(72.dp)
                         .background(
                             shape = CircleShape,
-                            brush = Brush.verticalGradient(
+                            brush = Brush.verticalGradient( // TODO: Theme
                                 listOf(
                                     Color(0xFF578CFF),
                                     Color(0xFF1F70F5)

@@ -67,4 +67,8 @@ class JournalListViewModel @Inject constructor() : ViewModel() {
         return filePath!!
     }
 
+    override fun onCleared() {
+        recorder.stop()
+    }
+
 }

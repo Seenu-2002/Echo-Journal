@@ -2,6 +2,8 @@ package com.seenu.dev.android.echojournal.di
 
 import android.content.Context
 import androidx.room.Room
+import com.seenu.dev.android.echojournal.data.audio.AudioPlayer
+import com.seenu.dev.android.echojournal.data.audio.AudioPlayerImpl
 import com.seenu.dev.android.echojournal.data.audio.AudioRecorder
 import com.seenu.dev.android.echojournal.data.audio.AudioRecorderImpl
 import com.seenu.dev.android.echojournal.data.local.AudioJournalDao
@@ -43,6 +45,12 @@ object AppModule {
     @Singleton
     fun providesAudioRecorder(@ApplicationContext context: Context): AudioRecorder {
         return AudioRecorderImpl(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAudioPlayer(@ApplicationContext context: Context): AudioPlayer {
+        return AudioPlayerImpl(context)
     }
 
 }

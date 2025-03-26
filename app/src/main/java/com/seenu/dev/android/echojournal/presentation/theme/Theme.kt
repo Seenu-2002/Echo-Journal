@@ -13,8 +13,9 @@ import androidx.compose.ui.platform.LocalContext
 private val LightColorScheme = lightColorScheme(
     primary = Color(0xFF00419C),
     primaryContainer = Color(0xFF1F70F5),
+    onPrimaryContainer = Color(0xFFEEF0FF),
     onPrimary = Color(0xFFFFFFFF),
-    inversePrimary = Color(0xFF001945),
+    inversePrimary = Color(0xFFBAC6E9),
     secondary = Color(0xFF3B4663),
     secondaryContainer = Color(0xFF3B4663),
     onErrorContainer = Color(0xFF680014),
@@ -34,7 +35,7 @@ private val LightColorScheme = lightColorScheme(
 fun EchoJournalTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {

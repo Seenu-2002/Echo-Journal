@@ -1,6 +1,7 @@
 package com.seenu.dev.android.echojournal.data.repository
 
 import com.seenu.dev.android.echojournal.data.entity.Journal
+import com.seenu.dev.android.echojournal.data.entity.JournalTag
 import com.seenu.dev.android.echojournal.data.entity.JournalWithTags
 import com.seenu.dev.android.echojournal.data.local.AudioJournalDao
 import kotlinx.coroutines.Dispatchers
@@ -33,6 +34,18 @@ class AudioJournalRepositoryImpl @Inject constructor(
     override suspend fun deleteJournal(journal: Journal) {
         return withContext(Dispatchers.IO) {
             dao.deleteJournal(journal)
+        }
+    }
+
+    override suspend fun createTag(tag: String) {
+        return withContext(Dispatchers.IO) {
+            dao.insertTag(JournalTag(tagId = 0L, tag = tag))
+        }
+    }
+
+    override suspend fun searchTags(query: String): Flow<List<JournalTag>> {
+        return withContext(Dispatchers.IO) {
+            dao.searchTags(query)
         }
     }
 }
